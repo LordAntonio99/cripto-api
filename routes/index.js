@@ -1,9 +1,11 @@
 const router = require("express").Router();
-const monedas = require("../data/monedas.json");
 
 router.get("/", (req, res) => {
     const data = {
-        "Available currencies": monedas
+        "API ROUTES": {
+            "/": "This webpage",
+            "/price/:coin_name": "Get the price of a cryptocurrency in USD and EUR",
+        }
     }
   res.status(200).json(data);
 });
