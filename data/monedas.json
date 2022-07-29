@@ -1,0 +1,18 @@
+{
+  "BTC": "Bitcoin",
+  "ETH": "Ethereum",
+  "LTC": "Litecoin",
+  "BCH": "Bitcoin Cash",
+  "XRP": "Ripple",
+  "EOS": "EOS",
+  "XMR": "Monero",
+  "DASH": "Dash",
+  "ZEC": "Zcash",
+  "BTG": "Bitcoin Gold",
+  "XEM": "NEM",
+  "ADA": "Cardano",
+  "XLM": "Stellar",
+  "TRX": "TRON",
+  "IOTA": "IOTA",
+  "ETC": "Ethereum Classic"
+}
