@@ -5,10 +5,12 @@ const cheerio = require("cheerio");
 router.get("/:id", async (req, res) => {
   const currency = req.params.id;
   try {
-    const response = await axios.get(
+    // Datos generales
+
+    var response = await axios.get(
       `https://coinmarketcap.com/currencies/${currency}/`
     );
-    const html = response.data;
+    var html = response.data;
     var $ = cheerio.load(html);
     const price = $(
       "#__next > div > div.main-content > div.sc-57oli2-0.comDeo.cmc-body-wrapper > div > div.sc-16r8icm-0.eMxKgr.container > div.n78udj-0.jskEGI > div > div.sc-16r8icm-0.kjciSH.priceSection > div.sc-16r8icm-0.kjciSH.priceTitle > div > span"
@@ -110,7 +112,25 @@ router.get("/:id", async (req, res) => {
       .text()
       .split(" ")[0]
       .replaceAll(",", "");
+
+    // Datos de mercados
+    response = await axios.get(
+      `https://coinmarketcap.com/currencies/${currency}/markets/`
+    );
+    html = response.data;
+    $ = cheerio.load(html);
+    const coinName = $(
+      "#__next > div > div.main-content > div.sc-57oli2-0.comDeo.cmc-body-wrapper > div > div.sc-16r8icm-0.eMxKgr.container > div.n78udj-0.jskEGI > div > div.sc-16r8icm-0.kjciSH.priceSection > h1"
+    ).text().split(" ")[0]
+    const coinSymbol = $(
+      "#__next > div > div.main-content > div.sc-57oli2-0.comDeo.cmc-body-wrapper > div > div.sc-16r8icm-0.eMxKgr.container > div.n78udj-0.jskEGI > div > div.sc-16r8icm-0.kDzKwW.nameSection > div.sc-16r8icm-0.gpRPnR.nameHeader > h2 > small"
+    ).text();
+
+    const test = $("#__next > div > div.main-content > div.sc-57oli2-0.comDeo.cmc-body-wrapper > div > div.sc-16r8icm-0.jKrmxw.container > div:nth-child(2) > div.sc-10p9viq-3.jfTMrS > div > table > tbody > tr:nth-child(1) > td:nth-child(4) > p").text()
+    console.log(test)
     const data = {
+      coinName,
+      coinSymbol,
       price,
       priceChange24h,
       tradingVolume24h,
