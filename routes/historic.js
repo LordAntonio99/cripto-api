@@ -18,7 +18,7 @@ router.get("/:id", async (req, res) => {
       `https://coinmarketcap.com/es/currencies/${currency}/historical-data/`,
       { waitUntil: "networkidle2" }
     );
-    await page.screenshot({ path: "./screenshots/screenshot.png" });
+    // await page.screenshot({ path: "./screenshots/screenshot.png" });
     const html = await page.content();
     var $ = cheerio.load(html);
     let array = [];
