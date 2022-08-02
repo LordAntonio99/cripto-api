@@ -121,13 +121,13 @@ router.get("/:id", async (req, res) => {
     $ = cheerio.load(html);
     const coinName = $(
       "#__next > div > div.main-content > div.sc-57oli2-0.comDeo.cmc-body-wrapper > div > div.sc-16r8icm-0.eMxKgr.container > div.n78udj-0.jskEGI > div > div.sc-16r8icm-0.kjciSH.priceSection > h1"
-    ).text().split(" ")[0]
+    )
+      .text()
+      .split(" ")[0];
     const coinSymbol = $(
       "#__next > div > div.main-content > div.sc-57oli2-0.comDeo.cmc-body-wrapper > div > div.sc-16r8icm-0.eMxKgr.container > div.n78udj-0.jskEGI > div > div.sc-16r8icm-0.kDzKwW.nameSection > div.sc-16r8icm-0.gpRPnR.nameHeader > h2 > small"
     ).text();
 
-    const test = $("#__next > div > div.main-content > div.sc-57oli2-0.comDeo.cmc-body-wrapper > div > div.sc-16r8icm-0.jKrmxw.container > div:nth-child(2) > div.sc-10p9viq-3.jfTMrS > div > table > tbody > tr:nth-child(1) > td:nth-child(4) > p").text()
-    console.log(test)
     const data = {
       coinName,
       coinSymbol,
@@ -150,7 +150,6 @@ router.get("/:id", async (req, res) => {
       marketPercent,
       marketPosition,
       totalCoinSupply,
-      //   markets,
     };
     res.status(200).json(data);
   } catch (error) {
