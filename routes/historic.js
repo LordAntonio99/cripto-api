@@ -8,8 +8,8 @@ router.get("/:id", async (req, res) => {
   try {
     const browser = await puppeteer.launch({
       defaultViewport: {
-        width: 1920,
-        height: 1080,
+        width: 500,
+        height: 500,
       },
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
